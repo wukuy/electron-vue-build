@@ -1,11 +1,11 @@
-> 
+> this is a simple electron + vue build
 
-# run dev
+### run dev
 ```bash
 yarn run start
 ```
 
-# run build
+### run build
 ```bash
 yarn run build
 ```

@@ -1,5 +1,5 @@
 {
-  "name": "electron-vue",
+  "name": "electron-music",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -9,11 +9,11 @@
   },
   "homepage": "https://github.com/wukuy",
   "scripts": {
-    "dev": "webpack --config ./build/webpack.env.js",
-    "start": "node ./build/webpack.env.js",
-    "build": "node ./build/webpack.build.js && electron-builder ",
-    "build:deb": "node ./build/webpack.build.js  && electron-builder --linux deb",
-    "build:web": "node ./build/webpack.build.js"
+    "dev": "webpack --config ./build/webpack.dev.js",
+    "start": "node ./build/webpack.dev.js",
+    "build": "node ./build/webpack.prod.js && electron-builder ",
+    "build:deb": "node ./build/webpack.prod.js  && electron-builder --linux deb",
+    "build:web": "node ./build/webpack.prod.js"
   },
   "build": {
     "directories": {

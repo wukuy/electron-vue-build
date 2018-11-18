@@ -18,6 +18,7 @@ function startRendere() {
             contentBase: './dist',
             hot: true,
             host: 'localhost',
+            clientLogLevel: 'none'
         };
 
         webpackDevServer.addDevServerEntrypoints(rendererConfig, options);

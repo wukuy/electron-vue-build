@@ -1,0 +1,43 @@
+{
+  "name": "electron-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "author": {
+    "name": "wukuy",
+    "email": "964453362@qq.com"
+  },
+  "homepage": "https://github.com/wukuy",
+  "scripts": {
+    "dev": "webpack --config ./build/webpack.env.js",
+    "start": "node ./build/webpack.env.js",
+    "build": "node ./build/webpack.build.js && electron-builder ",
+    "build:deb": "node ./build/webpack.build.js  && electron-builder --linux deb",
+    "build:web": "node ./build/webpack.build.js"
+  },
+  "build": {
+    "directories": {
+      "output": "package"
+    },
+    "files": [
+      "dist/**/*"
+    ]
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "electron": "^3.0.8",
+    "electron-builder": "^20.36.2",
+    "html-webpack-plugin": "^3.2.0",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  }
+}

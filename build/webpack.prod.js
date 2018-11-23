@@ -10,8 +10,10 @@ function startMain() {
         complier.hooks.afterEmit.tap('after-emit', () => {
             resolve();
         });
-        complier.run(()=> {
-            console.log('main compile done');
+        complier.run((err, stats) => {
+            console.log(stats.toString({
+                colors: true
+            }));
         });
     });
 }
@@ -24,8 +26,10 @@ function startRenderer() {
         complier.hooks.afterEmit.tap('after-emit', () => {
             resolve();
         });
-        complier.run(() => {
-            console.log('renderer compile done');
+        complier.run((err, stats) => {
+            console.log(stats.toString({
+                colors: true
+            }));
         });
     });
 }

@@ -1,8 +1,8 @@
 {
   "name": "electron-vue-build",
   "version": "1.0.0",
-  "description": "",
-  "main": "dist/index.js",
+  "description": "this is a electron + vue build",
+  "main": "./dist/index.js",
   "author": {
     "name": "wukuy",
     "email": "964453362@qq.com"
@@ -27,9 +27,15 @@
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.1",
     "electron": "^3.0.8",
     "electron-builder": "^20.36.2",
+    "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "progress-bar-webpack-plugin": "^1.11.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.25.1",

@@ -16,7 +16,6 @@ function createWindow () {
     ? `http://localhost:8210`
     : `file://${__dirname}/index.html`
   
-  console.log(winURL);
   win.loadURL(winURL);
 
   // 打开开发者工具

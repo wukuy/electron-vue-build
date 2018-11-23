@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -12,10 +11,13 @@ module.exports = {
         filename: '[name].js',
         path: path.join(__dirname, '../dist')
     },
-    // webpack 对 __dirname 进行了处理. 所以需要禁用.
-    // https://www.webpackjs.com/configuration/node/#node-__dirname
-    node: {
-        __dirname: false,
-        __filename: false
+    module: {
+        rules: [
+          {
+            test: /\.js$/,
+            type: "javascript/esm",
+            exclude: /node_modules/,
+          }
+        ]
     }
 }

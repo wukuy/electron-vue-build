@@ -2,8 +2,6 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
-
 
 module.exports = {
     mode: 'development',
@@ -18,7 +16,15 @@ module.exports = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use: 'vue-loader'
+            },
+            {
+                test: /\.styl(us)?$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    'stylus-loader'
+                ]
             }
         ]
     },
@@ -30,8 +36,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin('./dist/*', {
             root: path.resolve(__dirname, '../')
-        }),
-        new webpack.HotModuleReplacementPlugin(),
+        })
     ],
     resolve: {
         alias: {

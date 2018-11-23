@@ -8,7 +8,7 @@ module.exports = env => {
         mode: env,
         devtool: 'none',
         entry: {
-            index: './src/renderer/main.js',
+            main: './src/renderer/main.js',
         },
         target: env == 'development' ? 'web' : 'electron-renderer',
         output: {
@@ -49,15 +49,11 @@ module.exports = env => {
         optimization: {
             splitChunks: {
                 cacheGroups: {
-                    vue: {
-                        test: 'vue$',
-                        name: "vue",
-                    },
-                    /* commons: {
+                    commons: {
                         test: /[\\/]node_modules[\\/]/,
                         name: "vendors",
                         chunks: "all"
-                    } */
+                    }
                 }
             }
         }

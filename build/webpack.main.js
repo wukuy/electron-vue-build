@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = env => {
     return {
-        mode: 'development',
+        mode: env,
         devtool: 'none',
         target: 'electron-main',
         entry: {

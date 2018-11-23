@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-let rendererConfig = require('./webpack.renderer');
-const mainConfig = require('./webpack.main');
+const RendererConfig = require('./webpack.renderer');
+const MainConfig = require('./webpack.main');
 const { spawn } = require('child_process');
 const electron = require('electron');
 const path = require('path');
@@ -15,16 +15,6 @@ let isMainRefresh = null;
 
 // 启动渲染进程编译
 function startRendere() {
-    rendererConfig.plugins.push(...[
-        new webpack.HotModuleReplacementPlugin(),
-        new ProgressBarWebpackPlugin(),
-        new FriendlyErrorsWebpackPlugin({
-            compilationSuccessInfo: {
-                messages: [`Your application is running`],
-            },
-        })
-    ]);
-
     return new Promise((resolve, reject) => {
         const options = {
             quiet: true,
@@ -33,6 +23,19 @@ function startRendere() {
             host: 'localhost',
             clientLogLevel: 'none',
         };
+        const port = 8210;
+        const url = `http://localhost`;
+
+        let rendererConfig = RendererConfig('development');
+        rendererConfig.plugins.push(...[
+            new webpack.HotModuleReplacementPlugin(),
+            new ProgressBarWebpackPlugin(),
+            new FriendlyErrorsWebpackPlugin({
+                compilationSuccessInfo: {
+                    messages: [`Your application is running`, `web server ${url}:${port}`],
+                },
+            })
+        ]);
 
         WebpackDevServer.addDevServerEntrypoints(rendererConfig, options);
         const compiler = webpack(rendererConfig);
@@ -42,7 +45,7 @@ function startRendere() {
         });
 
         const server = new WebpackDevServer(compiler, options);
-        server.listen(8210, 'localhost');
+        server.listen(port);
     });
 }
 
@@ -63,7 +66,7 @@ function startElectron () {
 // 启动主进程编译
 function startMain() {
     return new Promise((resolve, reject) => {
-        const compiler = webpack(mainConfig);
+        const compiler = webpack(MainConfig('development'));
         compiler.hooks.afterEmit.tap('after-emit', () => {
             resolve();
         });
